@@ -45,15 +45,16 @@ En la carpeta extraída, localiza el archivo ejecutable "main_console_inferfaz.p
 
 A.. Abre la terminal.
 
-B.. Navega al directorio usando cd …
+B.. Utiliza este comando para clonar el repositorio: git clone https://github.com/SofiaCorrea14/PensionCalculator1.git
 
-C..Crea una carpeta usando el comando mkdir ~/Desktop/Proyectos (Proyecto será el nombre de la carpeta, este puede tener el nombre que desees y así mismo esta carpeta estará guardada predeteminadamente en el escritorio), este será el directorio donde clonaremos nuestro proyecto.
+C.. A continuación ingresa el comando cd PensionCalculator1 
 
-D.. Utiliza este comando para clonar el repositorio: git clone 
+D.. Por último ejecuta el comando python main_console.py
 
-E.. A continuación ingresa el comando cd PensionCalculator y posteriormente cd CalculadoraPensional
-
-F.. Por último ejecuta el comando winpty python main_console.py(Si estás desde Git Bash) o python main_console.py (Si estás desde powershell)
+E.. El programa ejecutará y mostrará un menú
+Selecciona la opción 1, calcular pensión.
+Ingresa la información requerida como edad, salario, semanas laboradas, etc.
+Una vez veas los resultados selecciona el botón salir
 
 #### Ejecución desde visual estudio :
 Haz doble clic en " main_interfaz " para abrir la aplicación.
@@ -64,6 +65,7 @@ Cuando se abra la ventana, selecciona el ícono de "Restaurar" (un cuadrado sobr
 Introduce la información requerida como edad, salario, semanas laboradas, etc.
 Haz clic en "Calcular" para obtener la estimación de tu pensión.
 Los resultados se mostrarán en una nueva ventana.
+Una vez veas los resultados selecciona el botón salir
 
 ## 5. Cerrar la Aplicación:
 Una vez obtenidos los resultados, puedes cerrar la aplicación como cualquier otra.
