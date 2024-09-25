@@ -31,21 +31,21 @@ Requisitos Previos Antes de comenzar, asegúrate de tener lo siguiente:
 ## Instrucciones de Uso
 
 ### 1.	Descarga de Archivos:
-Descarga el archivo comprimido " CalculadoraPensional ".
+Descarga el archivo comprimido " PensionCalculator.-main ".
 
 ### 2.	Extracción de Archivos:
-Usa un programa de extracción para descomprimir " CalculadoraPensional ".
+Usa un programa de extracción para descomprimir "PensionCalculator.-main".
 Extrae los archivos en una ubicación de tu elección.
 
 ### Ubicación del Ejecutable:
-En la carpeta extraída, localiza el archivo ejecutable " CalculadoraPensional".
+En la carpeta extraída, localiza el archivo ejecutable "main_console_inferfaz.py" y "main_console.py".
 
 
 ### 3. Para ejecutar :
 
-A.Abre la terminal.
+A.. Abre la terminal.
 
-B..Navega al directorio usando cd …
+B.. Navega al directorio usando cd …
 
 C..Crea una carpeta usando el comando mkdir ~/Desktop/Proyectos (Proyecto será el nombre de la carpeta, este puede tener el nombre que desees y así mismo esta carpeta estará guardada predeteminadamente en el escritorio), este será el directorio donde clonaremos nuestro proyecto.
 
