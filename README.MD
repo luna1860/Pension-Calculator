@@ -16,10 +16,15 @@ Nuestro objetivo como Futuro Seguro es permitir a los usuarios planificar su fut
 ## ¿Cómo Utilizar la Calculadora / cómo lo ejecuto?
 
 Requisitos Previos Antes de comenzar, asegúrate de tener lo siguiente:
+
 •	Computadora: Necesitarás una computadora (Windows, macOS o Linux).
+
 •	Conexión a Internet: Para descargar la carpeta "CalculadoraPensional".
+
 •	Programa de Extracción de Archivos: Como WinRAR, 7-Zip o el descompresor integrado de tu sistema.
+
 •	Espacio en Disco: Suficiente para almacenar y ejecutar la calculadora.
+
 •	Permisos de Ejecución: Puede que necesites permisos de administrador para ejecutar el archivo "main_interfaz".
 
 
