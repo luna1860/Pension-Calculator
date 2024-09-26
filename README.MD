@@ -49,11 +49,16 @@ B.. Utiliza este comando para clonar el repositorio: git clone https://github.co
 
 C.. A continuación ingresa el comando cd PensionCalculator1 
 
-D.. Por último ejecuta el comando python main_console.py
+D.. Instalar las dependecias utilizando pip install -r requirements.txt 
 
-E.. El programa ejecutará y mostrará un menú
+E.. Por último ejecuta el comando python main_console.py
+
+F.. El programa ejecutará y mostrará un menú
+
 Selecciona la opción 1, calcular pensión.
+
 Ingresa la información requerida como edad, salario, semanas laboradas, etc.
+
 Una vez veas los resultados selecciona el botón salir
 
 #### Ejecución desde visual estudio :
