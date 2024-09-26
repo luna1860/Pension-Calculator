@@ -51,7 +51,7 @@ C.. A continuación ingresa el comando cd PensionCalculator1
 
 D.. Instalar las dependecias utilizando pip install -r requirements.txt 
 
-E.. Por último ejecuta el comando python main_console.py
+E.. Por último ejecuta el comando python main_console.py o python3 main_cosole.py
 
 F.. El programa ejecutará y mostrará un menú
 
