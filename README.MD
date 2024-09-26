@@ -60,11 +60,13 @@ Ingresa la información requerida como edad, salario, semanas laboradas, etc.
 Una vez veas los resultados selecciona el botón salir
 
 #### Ejecución desde la consola :
-Ejecuta el comando python main_console_interfaz.py o python3 main_cosole_interfaz.py
+Ejecuta el comando python main_console_interfaz.py o python3 main_cosole_interfaz.py.
+
 Cuando se abra la ventana, selecciona el ícono de "Maximizar" (un cuadrado sobre otro cuadrado) en la parte superior derecha para ajustar la ventana.
 
 #### Ejecución desde visual estudio :
 Haz doble clic en " main_interfaz " para abrir la aplicación.
+
 Cuando se abra la ventana, selecciona el ícono de "Maximizar" (un cuadrado sobre otro cuadrado) en la parte superior derecha para ajustar la ventana.
 
 
