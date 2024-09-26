@@ -25,7 +25,7 @@ Requisitos Previos Antes de comenzar, asegúrate de tener lo siguiente:
 
 •	Espacio en Disco: Suficiente para almacenar y ejecutar la calculadora.
 
-•	Permisos de Ejecución: Puede que necesites permisos de administrador para ejecutar el archivo "main_interfaz".
+•	Permisos de Ejecución: Puede que necesites permisos de administrador para ejecutar el archivo "main_console_interfaz".
 
 
 ## Instrucciones de Uso
@@ -56,14 +56,16 @@ E.. Por último ejecuta el comando python main_console.py o python3 main_cosole.
 F.. El programa ejecutará y mostrará un menú
 
 Selecciona la opción 1, calcular pensión.
-
 Ingresa la información requerida como edad, salario, semanas laboradas, etc.
-
 Una vez veas los resultados selecciona el botón salir
+
+#### Ejecución desde la consola :
+Ejecuta el comando python main_console_interfaz.py o python3 main_cosole_interfaz.py
+Cuando se abra la ventana, selecciona el ícono de "Maximizar" (un cuadrado sobre otro cuadrado) en la parte superior derecha para ajustar la ventana.
 
 #### Ejecución desde visual estudio :
 Haz doble clic en " main_interfaz " para abrir la aplicación.
-Cuando se abra la ventana, selecciona el ícono de "Restaurar" (un cuadrado sobre otro cuadrado) en la parte superior derecha para ajustar la ventana.
+Cuando se abra la ventana, selecciona el ícono de "Maximizar" (un cuadrado sobre otro cuadrado) en la parte superior derecha para ajustar la ventana.
 
 
 ## 4. Uso de la Aplicación:
