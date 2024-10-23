@@ -3,7 +3,9 @@ import os
 
 # Añadir el directorio superior a sys.path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from src.Pension_Calculator.pension_calculator import *
+from Pension_Calculator.pension_calculator import *
+from sql.database import database_connection
+
 
 import kivy
 from kivy.app import App
@@ -146,7 +148,16 @@ class FormScreen(Screen):
         button_layout.add_widget(volver_button)
 
     def calcular_pension(self, instance):
+        conn = None
+        cursor = None
         try:
+        # Obtener conexión desde la función database_connection
+            conn, cursor = database_connection()  # Llama a la función sin 'self'
+
+            if conn is None or cursor is None:
+                raise Exception("No se pudo establecer la conexión a la base de datos.")
+
+        # Aquí ya puedes hacer el cálculo y la inserción como antes
             edad_actual = int(self.inputs[0].text)
             sexo = self.inputs[1].text.lower()
             salario_actual = float(self.inputs[2].text)
@@ -156,9 +167,18 @@ class FormScreen(Screen):
             tasa_administracion = float(self.inputs[6].text)
 
             pension_calculator = Calcular(edad_actual, sexo, salario_actual, semanas_laboradas, ahorro_actual,
-                                          rentabilidad_fondo, tasa_administracion)
+                                      rentabilidad_fondo, tasa_administracion)
             valor_ahorro_pensional, pension_anual, pension_mensual = pension_calculator.calcular_pension()
 
+        # Insertar los datos en la base de datos PostgreSQL
+            cursor.execute('''
+                INSERT INTO pension (edad_actual, sexo, salario_actual, semanas_laboradas, ahorro_actual, rentabilidad_fondo, tasa_administracion)
+                VALUES (%s, %s, %s, %s, %s, %s, %s)
+            ''', (edad_actual, sexo, salario_actual, semanas_laboradas, ahorro_actual, rentabilidad_fondo, tasa_administracion))
+
+            conn.commit()
+
+        # Mostrar el resultado en la pantalla de resultados
             result_screen = self.manager.get_screen('resultado')
             result_screen.mostrar_resultado(valor_ahorro_pensional, pension_anual, pension_mensual)
             self.manager.current = 'resultado'
@@ -166,6 +186,13 @@ class FormScreen(Screen):
         except Exception as e:
             popup = Popup(title='Error', content=Label(text=str(e)), size_hint=(None, None), size=(900, 300))
             popup.open()
+
+        finally:
+            if cursor:
+                cursor.close()
+            if conn:
+                conn.close()
+
 
     def volver_principal(self, instance):
         self.manager.current = 'principal'
