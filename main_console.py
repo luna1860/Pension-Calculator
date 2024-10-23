@@ -1,4 +1,4 @@
-from src.Console.PensionCalculatorConsole import *
+from src.console.pension_calculator_console import *
 
 # Constantes para las opciones del menú
 opcion_calcular = "1"

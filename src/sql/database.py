@@ -4,7 +4,7 @@ import psycopg2
 
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from Pension_Calculator.pension_calculator import *
+from pension_calculator_folder.pension_calculator import *
 from sql.config import *
 
 def database_connection():

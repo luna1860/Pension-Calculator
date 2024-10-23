@@ -4,7 +4,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import psycopg2
 from model.pension import Pension
-from sql import SecretConfig
+from sql import secret_config
 
 class ControladorPension:
 
@@ -61,11 +61,11 @@ class ControladorPension:
     def ObtenerCursor():
         """ Conecta a la BD y devuelve el cursor """
         connection = psycopg2.connect(
-            database=SecretConfig.PGDATABASE,
-            user=SecretConfig.PGUSER,
-            password=SecretConfig.PGPASSWORD,
-            host=SecretConfig.PGHOST,
-            port=SecretConfig.PGPORT
+            database=secret_config.PGDATABASE,
+            user=secret_config.PGUSER,
+            password=secret_config.PGPASSWORD,
+            host=secret_config.PGHOST,
+            port=secret_config.PGPORT
         )
         return connection.cursor()
 

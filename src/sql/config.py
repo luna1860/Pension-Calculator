@@ -1,5 +1,6 @@
-def config(self):
-    self.PGHOST = 'ep-fancy-wildflower-a5e2d0by.us-east-2.aws.neon.tech'
-    self.PGDATABASE = 'neondb'
-    self.PGUSER = 'neondb_owner'
-    self.PGPASSWORD = 'nd6fXMFaw2Px'
+# No expongas tus credenciales de Neon
+PGHOST = 'Acá debe ingresar el host de su Neon (base de datos)' 
+PGDATABASE = 'Acá debe ingresar su base de datos'
+PGUSER = 'Acá debe ingresar su nombre de usuario en Neon'
+PGPASSWORD = 'Acá debe ingresar su contraseña'
+PGPORT = "5432"
