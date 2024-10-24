@@ -107,6 +107,7 @@ Para la conexión con el codigo proporcionado, se realizo de la siguiente manera
 
 • Para la conexión debemos seguir la estrucutra que nos da NeonTech para conectar con "Parameters only" ya que nos permite hacerlo de la siguiente manera, siguiendo la estrucutra en codigo de Python:
 
+
 connection = psycopg2.connect(
 
             database= PGDATABASE,
@@ -124,19 +125,21 @@ connection = psycopg2.connect(
         return connection.cursor()
 
 
+
 • Luego NeonTech al momento de elegir el "parameters only" nos da lo siguiente:
 
-PGHOST='jfhsdjahdjasdhjask'
+- PGHOST='jfhsdjahdjasdhjask'
 
-PGDATABASE='ashjdkasdhajk'
+- PGDATABASE='ashjdkasdhajk'
 
-PGUSER='jashdahfjhadfad'
+- PGUSER='jashdahfjhadfad'
 
-PGPASSWORD='jashdadhajdka'
+- PGPASSWORD='jashdadhajdka'
 
 (Cabe recalcar que estas no son credenciales reales, sino, texto de ejemplo)
 
 Ademas es importante mencionar que el PGPORT no nos lo proporciona NeonTech sino que por defecto es el "5432", siendo este un valor entero y no un string.
+
 
 • Finalmente en la parte de tu codigo:
 connection = psycopg2.connect(
