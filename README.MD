@@ -128,15 +128,13 @@ connection = psycopg2.connect(
 
 • Luego NeonTech al momento de elegir el "parameters only" nos da lo siguiente:
 
-- PGHOST='jfhsdjahdjasdhjask'
+- PGHOST='texto de ejemplo'
 
-- PGDATABASE='ashjdkasdhajk'
+- PGDATABASE='texto de ejemplo'
 
-- PGUSER='jashdahfjhadfad'
+- PGUSER='texto de ejemplo'
 
-- PGPASSWORD='jashdadhajdka'
-
-(Cabe recalcar que estas no son credenciales reales, sino, texto de ejemplo)
+- PGPASSWORD='texto de ejemplo'
 
 Ademas es importante mencionar que el PGPORT no nos lo proporciona NeonTech sino que por defecto es el "5432", siendo este un valor entero y no un string.
 
