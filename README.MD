@@ -106,20 +106,32 @@ Para la conexión con el codigo proporcionado, se realizo de la siguiente manera
 • Lo primero es instalar la libreria necesaria para conexión con bases de datos PostgreSQL haciendo en la terminal "pip install psycopg2"
 
 • Para la conexión debemos seguir la estrucutra que nos da NeonTech para conectar con "Parameters only" ya que nos permite hacerlo de la siguiente manera, siguiendo la estrucutra en codigo de Python:
+
 connection = psycopg2.connect(
+
             database= PGDATABASE,
+
             user=PGUSER,
+
             password=PGPASSWORD,
+
             host=PGHOST,
+
             port=PGPORT
+
         )
+
         return connection.cursor()
+
 
 • Luego NeonTech al momento de elegir el "parameters only" nos da lo siguiente:
 
 PGHOST='jfhsdjahdjasdhjask'
+
 PGDATABASE='ashjdkasdhajk'
+
 PGUSER='jashdahfjhadfad'
+
 PGPASSWORD='jashdadhajdka'
 
 (Cabe recalcar que estas no son credenciales reales, sino, texto de ejemplo)
