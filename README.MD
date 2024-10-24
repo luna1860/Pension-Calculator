@@ -45,7 +45,7 @@ En la carpeta extraída, localiza el archivo ejecutable "main_console_inferfaz.p
 
 A.. Abre la terminal.
 
-B.. Utiliza este comando para clonar el repositorio: git clone https://github.com/SofiaCorrea14/PensionCalculator1.git
+B.. Utiliza este comando para clonar el repositorio: git clone https://github.com/santiagocordobaf/PensionCalculator1.git
 
 C.. A continuación ingresa el comando cd PensionCalculator1 
 
@@ -78,3 +78,30 @@ Una vez veas los resultados selecciona el botón salir
 
 ## 5. Cerrar la Aplicación:
 Una vez obtenidos los resultados, puedes cerrar la aplicación como cualquier otra.
+
+## 6. Creación de la Base de datos:
+Para la creación la base de datos, usamos Neon tech (https://neon.tech/) la cual nos permite la creacion de proyectos, en la cual creamos una tabla llamada "Pensiones".
+En la cual se guarda registro de los siguientes campos:
+
+• ID
+
+• edad_actual
+
+• Sexo
+
+• Salario_actual
+
+• semanas_laboradas
+
+• ahorro_actual
+
+• rentabilidad_fondo
+
+• tasa_administracion
+
+## 7. Conexión de la base de datos:
+Para la conexión con el codigo proporcionado, se realizo de la siguiente manera:
+
+
+
+
