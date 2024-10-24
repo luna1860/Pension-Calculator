@@ -81,7 +81,8 @@ Una vez obtenidos los resultados, puedes cerrar la aplicación como cualquier ot
 
 ## 6. Creación de la Base de datos:
 Para la creación la base de datos, usamos Neon tech (https://neon.tech/) la cual nos permite la creacion de proyectos, en la cual creamos una tabla llamada "Pensiones".
-En ducha tabla se guarda registro de los siguientes campos:
+
+En dicha tabla se guarda registro de los siguientes campos:
 
 • ID
 
