@@ -105,38 +105,17 @@ Para la conexión con el codigo proporcionado, se realizo de la siguiente manera
 
 • Lo primero es instalar la libreria necesaria para conexión con bases de datos PostgreSQL haciendo en la terminal "pip install psycopg2"
 
-• Para la conexión debemos seguir la estrucutra que nos da NeonTech para conectar con "Parameters only" ya que nos permite hacerlo de la siguiente manera, siguiendo la estrucutra en codigo de Python:
-
-
-![Image Alt](https://github.com/santiagocordobaf/PensionCalculator1/blob/main/bloque%20de%20codigo%20.jpg)
-
-
-
 • Luego NeonTech al momento de elegir el "parameters only" nos da lo siguiente:
 
-- PGHOST='texto de ejemplo'
-
-- PGDATABASE='texto de ejemplo'
-
-- PGUSER='texto de ejemplo'
-
-- PGPASSWORD='texto de ejemplo'
+![Image Alt](https://github.com/santiagocordobaf/PensionCalculator1/blob/main/credenciales%20de%20ejemplo.jpg)
 
 Ademas es importante mencionar que el PGPORT no nos lo proporciona NeonTech sino que por defecto es el "5432", siendo este un valor entero y no un string.
 
 
-• Finalmente en la parte de tu codigo:
-connection = psycopg2.connect(
-            database= PGDATABASE,
-            user=PGUSER,
-            password=PGPASSWORD,
-            host=PGHOST,
-            port=PGPORT
-        )
-        return connection.cursor()
+• Finalmente en la parte de tu codigo en python con la libreria "psycopg2" importada vas realizar lo siguiente:
 
-Vas a reemplazar PGHOST, PGDATABSE, PGUSER, PGPASSWORD, por las credenciales reales que proporciona NeonTech las cuales son personales e intransferibles.
-Con estos pasos, tu base de datos deberia estar conectada de manera correcta sin ningun problema.
+![Image Alt](https://github.com/santiagocordobaf/PensionCalculator1/blob/main/conexion%20completa.jpg)
+
 
 
 
