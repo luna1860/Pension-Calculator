@@ -134,6 +134,9 @@ Haciendo el llamado de esta manera:
 
 Se agrega de la siguiente manera al gitignore:
 
+![Image Alt](https://github.com/santiagocordobaf/PensionCalculator1/blob/main/imagenes/gitignore.jpg)
+
+De este modo ya nuestras credenciales quedan completamente seguras y no corremos peligro de filtracion de datos.
 
 
 
