@@ -4,8 +4,8 @@
 
 Del numeral 1 al 5
 
--Sofia Correa Carmona
--Isabella Ceballos Bedoya
+- Sofia Correa Carmona
+- Isabella Ceballos Bedoya
 
 Del numeral 6 al 9
 
