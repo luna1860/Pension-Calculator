@@ -116,6 +116,8 @@ Ademas es importante mencionar que el PGPORT no nos lo proporciona NeonTech sino
 
 ![Image Alt](https://github.com/santiagocordobaf/PensionCalculator1/blob/main/conexion%20completa.jpg)
 
+Siguiendo estos pasos ya deberias tener tu base de datos correctamente conectada a tu proyecto.
+
 
 
 
