@@ -118,6 +118,12 @@ Ademas es importante mencionar que el PGPORT no nos lo proporciona NeonTech sino
 
 Siguiendo estos pasos ya deberias tener tu base de datos correctamente conectada a tu proyecto.
 
+## 9. Como crear y configurar el secrect_config
+
+
+
+
+
 
 
 
