@@ -107,18 +107,26 @@ La conexión con el codigo proporcionado, se realizo de la siguiente manera:
 
 • Luego NeonTech al momento de elegir el "parameters only" nos da lo siguiente:
 
-![Image Alt](https://github.com/santiagocordobaf/PensionCalculator1/blob/main/credenciales%20de%20ejemplo.jpg)
+![Image Alt](https://github.com/santiagocordobaf/PensionCalculator1/blob/main/imagenes/credenciales%20de%20ejemplo.jpg)
 
 Ademas es importante mencionar que el PGPORT no nos lo proporciona NeonTech sino que por defecto es el "5432", siendo este un valor entero y no un string.
 
 
 • Finalmente en la parte de tu codigo en python con la libreria "psycopg2" importada vas realizar lo siguiente:
 
-![Image Alt](https://github.com/santiagocordobaf/PensionCalculator1/blob/main/conexion%20completa.jpg)
-
+![Image Alt](https://github.com/santiagocordobaf/PensionCalculator1/blob/main/imagenes/conexion%20completa.jpg)
 Siguiendo estos pasos ya deberias tener tu base de datos correctamente conectada a tu proyecto.
 
 ## 9. Como crear y configurar el secrect_config
+
+- Primero nuestras credenciales, las cuales son:
+
+![Image Alt](https://github.com/santiagocordobaf/PensionCalculator1/blob/main/imagenes/credenciales%20de%20ejemplo.jpg)
+
+Las debemos mover a un nuevo archivo llamado "secret_config.py" para que de este modo podamos llamarla de esta manera en nuestro controller, que es donde realizamos nuestro proceso anterior de la conexión de la base de datos.
+
+Haciendo el llamado de esta manera:
+
 
 
 
