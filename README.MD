@@ -130,7 +130,7 @@ Haciendo el llamado de esta manera:
 
 ![Image Alt](https://github.com/santiagocordobaf/PensionCalculator1/blob/main/imagenes/llamado%20secret_config.jpg)
 
-- De este modo el nuevo archivo "secrect_config.py" que tiene nuestras credenciales reales, lo podemos agregar en nuestro gitignore para que nadie ademas de la persona dueña del proyecto pueda acceder a este archivo.
+- De este modo el nuevo archivo "secrect_config.py" que tiene nuestras credenciales reales, lo podemos agregar en nuestro gitignore para que nadie mas ademas de la persona dueña del proyecto pueda acceder a este archivo.
 
 Se agrega de la siguiente manera al gitignore:
 
