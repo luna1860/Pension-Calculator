@@ -101,7 +101,7 @@ En dicha tabla se guarda registro de los siguientes campos:
 • tasa_administración
 
 ## 7. Conexión de la base de datos:
-Para la conexión con el codigo proporcionado, se realizo de la siguiente manera:
+La conexión con el codigo proporcionado, se realizo de la siguiente manera:
 
 • Lo primero es instalar la libreria necesaria para conexión con bases de datos PostgreSQL haciendo en la terminal "pip install psycopg2"
 
