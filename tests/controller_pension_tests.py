@@ -3,62 +3,68 @@ import os
 import unittest
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
+import unittest
 from src.model.pension import Pension
 from src.controller.controller_pension import ControladorPension
+import psycopg2
 
 class TestControladorPension(unittest.TestCase):
 
-    def setUp(self):
-        """Esta función se ejecuta antes de cada prueba para preparar el entorno."""
+    @classmethod
+    def setUpClass(cls):
+        """ Configuración inicial para las pruebas: crear la conexión y la tabla """
         ControladorPension.CrearTabla()
-
-    def tearDown(self):
-        """Esta función se ejecuta después de cada prueba para limpiar el entorno."""
-        ControladorPension.EliminarTabla()
 
     def test_crear_tabla(self):
-        """Prueba para verificar que la tabla se crea correctamente."""
-        ControladorPension.CrearTabla()
-        self.assertTrue(True)
+        """ Prueba la creación de la tabla """
+        try:
+            ControladorPension.CrearTabla()
+        except Exception as e:
+            self.fail(f"Falló al crear la tabla: {e}")
 
-    def test_insertar_registro(self):
-        """Prueba para insertar un registro en la tabla."""
-        nuevo_registro = Pension(edad_actual=30, sexo='hombre', salario_actual=5000, semanas_laboradas=100, ahorro_actual=20000, rentabilidad_fondo=5.5, tasa_administracion=1.2)
-        ControladorPension.InsertarRegistro(nuevo_registro)
+    def test_insertar_pension(self):
+        """ Prueba insertar un registro de pensión válido """
+        pension = Pension(edad_actual=25, sexo='hombre', salario_actual=1000, semanas_laboradas=1150,
+                          ahorro_actual=40000, rentabilidad_fondo=5.5, tasa_administracion=1.2)
+        try:
+            ControladorPension.InsertarPension(pension)
+        except Exception as e:
+            self.fail(f"Falló al insertar un registro de pensión: {e}")
 
-        # Assert: Intentar buscar el registro para verificar que fue insertado correctamente
-        resultado = ControladorPension.BuscarRegistroPorID(1)
+    def test_insertar_pension_error(self):
+        """ Prueba insertar un registro con datos inválidos """
+        pension_invalida = Pension(edad_actual=17, sexo='hombre', salario_actual=1000, semanas_laboradas=1150,
+                                   ahorro_actual=40000, rentabilidad_fondo=5.5, tasa_administracion=1.2)
+        with self.assertRaises(psycopg2.Error):
+            ControladorPension.InsertarPension(pension_invalida)
+
+    def test_buscar_pension_por_id(self):
+        """ Prueba la búsqueda de un registro existente por ID """
+        pension = Pension(edad_actual=26, sexo='mujer', salario_actual=1200, semanas_laboradas=1250,
+                          ahorro_actual=45000, rentabilidad_fondo=6.0, tasa_administracion=1.5)
+        ControladorPension.InsertarPension(pension)
+        
+        resultado = ControladorPension.BuscarPensionPorId(1)
         self.assertIsNotNone(resultado)
-        self.assertEqual(resultado.edad_actual, 30)
-        self.assertEqual(resultado.sexo, 'hombre')
-        self.assertEqual(resultado.salario_actual, 5000)
+        self.assertEqual(resultado.edad_actual, pension.edad_actual)
 
-    def test_buscar_registro_por_id(self):
-        """Prueba para buscar un registro por ID."""
-        nuevo_registro = Pension(edad_actual=30, sexo='hombre', salario_actual=5000, semanas_laboradas=100, ahorro_actual=20000, rentabilidad_fondo=5.5, tasa_administracion=1.2)
-        ControladorPension.InsertarRegistro(nuevo_registro)
-
-        resultado = ControladorPension.BuscarRegistroPorID(1)
-
-        self.assertIsNotNone(resultado)
-        self.assertEqual(resultado.edad_actual, 30)
-        self.assertEqual(resultado.sexo, 'hombre')
-
-    def test_eliminar_registro(self):
-        """Prueba para eliminar un registro por ID."""
-        nuevo_registro = Pension(edad_actual=30, sexo='hombre', salario_actual=5000, semanas_laboradas=100, ahorro_actual=20000, rentabilidad_fondo=5.5, tasa_administracion=1.2)
-        ControladorPension.InsertarRegistro(nuevo_registro)
-
-        ControladorPension.EliminarRegistro(1)
-
-        resultado = ControladorPension.BuscarRegistroPorID(1)
+    def test_buscar_pension_por_id_no_existente(self):
+        """ Prueba la búsqueda de un ID que no existe """
+        resultado = ControladorPension.BuscarPensionPorId(9999)
         self.assertIsNone(resultado)
 
     def test_eliminar_tabla(self):
-        """Prueba para eliminar la tabla de pensión."""
-        ControladorPension.EliminarTabla()
+        """ Prueba la eliminación de la tabla """
+        try:
+            ControladorPension.EliminarTabla()
+            ControladorPension.CrearTabla()  # La recrea para otros tests
+        except Exception as e:
+            self.fail(f"Falló al eliminar la tabla: {e}")
 
-        self.assertTrue(True)
+    @classmethod
+    def tearDownClass(cls):
+        """ Limpieza final: eliminar la tabla y cerrar la conexión """
+        ControladorPension.EliminarTabla()
 
 if __name__ == '__main__':
     unittest.main()

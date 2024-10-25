@@ -1,4 +1,3 @@
-# Definición de excepciones
 class EdadNegativa(Exception):
     """Excepción lanzada cuando la edad es negativa."""
 

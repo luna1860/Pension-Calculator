@@ -1,5 +1,3 @@
-# src/model/Pension.py
-
 class Pension:
     def __init__(self, edad_actual, sexo, salario_actual, semanas_laboradas, ahorro_actual, rentabilidad_fondo, tasa_administracion, id=None):
         self.id = id

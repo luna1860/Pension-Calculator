@@ -1,3 +1,7 @@
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
 from src.pension_calculator_folder.pension_calculator import Calcular, EdadNegativa, SaldoNegativo, RentabilidadNegativa, AdministracionNegativa, SemanasNegativas, SemanasInsuficientes, EdadInsuficiente, SexoInvalido
 
 def ejecutar_calculo_pension():

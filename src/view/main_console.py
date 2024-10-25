@@ -1,4 +1,8 @@
-from src.console.pension_calculator_console import *
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from console.pension_calculator_console import *
 
 # Constantes para las opciones del menú
 opcion_calcular = "1"

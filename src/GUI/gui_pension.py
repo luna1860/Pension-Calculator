@@ -6,7 +6,6 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from pension_calculator_folder.pension_calculator import *
 from sql.database import database_connection
 
-
 import kivy
 from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
@@ -210,4 +209,3 @@ class PensionCalculatorApp(App):
 
 if __name__ == '__main__':
     PensionCalculatorApp().run()
-

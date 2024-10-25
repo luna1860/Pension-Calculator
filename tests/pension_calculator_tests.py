@@ -1,7 +1,9 @@
-import sys 
-sys.path.append("src")
+import sys
+import os
 import unittest
-from src.pension_calculator_folder import *
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from src.pension_calculator_folder.pension_calculator import *
 
 
 class TestCalcularPension(unittest.TestCase):

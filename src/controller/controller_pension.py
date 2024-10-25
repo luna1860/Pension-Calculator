@@ -25,16 +25,6 @@ class ControladorPension:
         cursor.connection.commit()
 
     @staticmethod
-    def EliminarTabla():
-        """ Borra la tabla de usuarios de la BD """
-        cursor = ControladorPension.ObtenerCursor()
-
-        cursor.execute("""drop table pension""" )
-        # Confirma los cambios realizados en la base de datos
-        # Si no se llama, los cambios no quedan aplicados
-        cursor.connection.commit()
-
-    @staticmethod
     def InsertarPension(pension: Pension):
         """ Inserta una pensión en la tabla """
         cursor = ControladorPension.ObtenerCursor()
@@ -68,17 +58,34 @@ class ControladorPension:
             port=secret_config.PGPORT
         )
         return connection.cursor()
+    
+    @staticmethod
+    def EliminarTabla():
+        """ Borra la tabla de usuarios de la BD """
+        cursor = ControladorPension.ObtenerCursor()
+
+        cursor.execute("""drop table pension""" )
+        # Confirma los cambios realizados en la base de datos
+        # Si no se llama, los cambios no quedan aplicados
+        cursor.connection.commit()
 
 if __name__ == "__main__":
-    ControladorPension.CrearTabla()
 
-    # Puedes insertar un registro de prueba si ya tienes la clase Pension lista
-    nuevo_registro = Pension(edad_actual=30, sexo='hombre', salario_actual=5000, semanas_laboradas=100, ahorro_actual=20000, rentabilidad_fondo=5.5, tasa_administracion=1.2)
+    # Creamos tabla luego de analizar si existe o no
+    ControladorPension.CrearTabla()
+    print("Tabla creada exitosamente")
+
+    # Insertamos un registro de prueba si ya tienes la clase Pension lista
+    nuevo_registro = Pension(edad_actual=25, sexo='hombre', salario_actual=1000, semanas_laboradas=1150, ahorro_actual=40000, rentabilidad_fondo=5.5, tasa_administracion=1.2)
     ControladorPension.InsertarPension(nuevo_registro)
+    print("Registro agregado a la tabla exitosamente")
     
-    # Buscar un registro (ajustado a lo que implementes, por ejemplo, por ID)
-    resultado = ControladorPension.BuscarPensionPorId(1)
+    # Buscamos un registro (ID)
+    resultado = ControladorPension.BuscarPensionPorId(2)
     print(resultado)
 
-    ### ControladorPension.EliminarTabla()
-    
+    # Para finalizar eliminamos tabla para un próximo ejemplo generar otra
+    """
+    ControladorPension.EliminarTabla()
+    print("Tabla eliminada exitosamente")
+    """
