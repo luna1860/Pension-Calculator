@@ -1,8 +1,16 @@
 # FUTURO SEGURO
 
 ## Autores
+
+Del numeral 1 al 5
+
 -Sofia Correa Carmona
 -Isabella Ceballos Bedoya
+
+Del numeral 6 al 9
+
+- Santiago Tavera Vargas
+- Santiago Cordoba
 
 ## ¿Qué es y para qué sirve?
 
