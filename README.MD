@@ -108,21 +108,7 @@ Para la conexión con el codigo proporcionado, se realizo de la siguiente manera
 • Para la conexión debemos seguir la estrucutra que nos da NeonTech para conectar con "Parameters only" ya que nos permite hacerlo de la siguiente manera, siguiendo la estrucutra en codigo de Python:
 
 
-connection = psycopg2.connect(
-
-            database= PGDATABASE,
-
-            user=PGUSER,
-
-            password=PGPASSWORD,
-
-            host=PGHOST,
-
-            port=PGPORT
-
-        )
-
-        return connection.cursor()
+![Image Alt](https://github.com/santiagocordobaf/PensionCalculator1/blob/main/bloque%20de%20codigo%20.jpg)
 
 
 
