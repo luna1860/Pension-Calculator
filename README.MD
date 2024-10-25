@@ -45,7 +45,7 @@ En la carpeta extraída, localiza el archivo ejecutable "main_console_inferfaz.p
 
 A.. Abre la terminal.
 
-B.. Utiliza este comando para clonar el repositorio: git clone https://github.com/SofiaCorrea14/PensionCalculator1.git
+B.. Utiliza este comando para clonar el repositorio: git clone https://github.com/santiagocordobaf/PensionCalculator1.git
 
 C.. A continuación ingresa el comando cd PensionCalculator1 
 
@@ -78,3 +78,57 @@ Una vez veas los resultados selecciona el botón salir
 
 ## 5. Cerrar la Aplicación:
 Una vez obtenidos los resultados, puedes cerrar la aplicación como cualquier otra.
+
+## 6. Creación de la Base de datos:
+Para la creación la base de datos, usamos Neon tech (https://neon.tech/) la cual nos permite la creacion de proyectos, en la cual creamos una tabla llamada "Pensiones".
+
+En dicha tabla se guarda registro de los siguientes campos:
+
+• ID
+
+• edad_actual
+
+• Sexo
+
+• Salario_actual
+
+• semanas_laboradas
+
+• ahorro_actual
+
+• rentabilidad_fondo
+
+• tasa_administración
+
+## 7. Conexión de la base de datos:
+La conexión con el codigo proporcionado, se realizo de la siguiente manera:
+
+• Lo primero es instalar la libreria necesaria para conexión con bases de datos PostgreSQL haciendo en la terminal "pip install psycopg2"
+
+• Luego NeonTech al momento de elegir el "parameters only" nos da lo siguiente:
+
+![Image Alt](https://github.com/santiagocordobaf/PensionCalculator1/blob/main/credenciales%20de%20ejemplo.jpg)
+
+Ademas es importante mencionar que el PGPORT no nos lo proporciona NeonTech sino que por defecto es el "5432", siendo este un valor entero y no un string.
+
+
+• Finalmente en la parte de tu codigo en python con la libreria "psycopg2" importada vas realizar lo siguiente:
+
+![Image Alt](https://github.com/santiagocordobaf/PensionCalculator1/blob/main/conexion%20completa.jpg)
+
+Siguiendo estos pasos ya deberias tener tu base de datos correctamente conectada a tu proyecto.
+
+## 9. Como crear y configurar el secrect_config
+
+
+
+
+
+
+
+
+
+
+
+
+
