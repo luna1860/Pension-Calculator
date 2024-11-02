@@ -28,7 +28,7 @@ class ResultScreen(Screen):
         layout = BoxLayout(orientation='vertical', padding=10, spacing=10)
 
         # Imagen de título con tamaño más grande
-        image = Image(source='Calculadora_pensional.jpg', size_hint_y=None, height=250)  # Aumenté el tamaño
+        image = Image(source='Calculadora_pensional.jpg', size_hint_y=None, height=250)
         layout.add_widget(image)
 
         # Resultados: ahorro pensional, pensión anual y mensual
@@ -47,14 +47,14 @@ class ResultScreen(Screen):
             layout.add_widget(value_label)
 
         # Botones Volver y Salir
-        button_layout = BoxLayout(spacing=10, size_hint_y=None, height=50)  # Ajusta el tamaño del layout de botones
+        button_layout = BoxLayout(spacing=10, size_hint_y=None, height=50)
         layout.add_widget(button_layout)
 
-        volver_button = Button(text='Volver', font_size=20, size_hint=(0.4, None), size=(100, 40))  # Botón más pequeño
+        volver_button = Button(text='Volver', font_size=20, size_hint=(0.4, None), size=(100, 40))
         volver_button.bind(on_press=self.volver_formulario)
         button_layout.add_widget(volver_button)
 
-        salir_button = Button(text='Salir', font_size=20, size_hint=(0.4, None), size=(100, 40))  # Botón más pequeño
+        salir_button = Button(text='Salir', font_size=20, size_hint=(0.4, None), size=(100, 40))
         salir_button.bind(on_press=self.salir)
         button_layout.add_widget(salir_button)
 
@@ -80,7 +80,7 @@ class PrincipalScreen(Screen):
         self.add_widget(layout)
 
         # Imagen de bienvenida con tamaño más grande
-        image = Image(source='Calculadora_pensional.jpg', size_hint_y=None, height=300)  # Aumenté el tamaño
+        image = Image(source='Calculadora_pensional.jpg', size_hint_y=None, height=300)
         layout.add_widget(image)
 
         # Mensaje de bienvenida en color negro
@@ -92,12 +92,12 @@ class PrincipalScreen(Screen):
         layout.add_widget(button_layout)
 
         # Botón Ir al Formulario
-        form_button = Button(text='Ir al formulario', font_size=25, size_hint=(0.4, None), size=(150, 40))  # Botón más pequeño
+        form_button = Button(text='Ir al formulario', font_size=25, size_hint=(0.4, None), size=(150, 40))
         form_button.bind(on_press=self.ir_al_formulario)
         button_layout.add_widget(form_button)
 
         # Botón Salir
-        salir_button = Button(text='Salir', font_size=25, size_hint=(0.4, None), size=(150, 40))  # Botón más pequeño
+        salir_button = Button(text='Salir', font_size=25, size_hint=(0.4, None), size=(150, 40))
         salir_button.bind(on_press=self.salir)
         button_layout.add_widget(salir_button)
 
@@ -116,11 +116,12 @@ class FormScreen(Screen):
         self.add_widget(layout)
 
         # Imagen de título
-        image = Image(source='Calculadora_pensional.jpg', size_hint_y=None, height=250)  # Aumenté el tamaño
+        image = Image(source='Calculadora_pensional.jpg', size_hint_y=None, height=250)
         layout.add_widget(image)
 
         # Formulario
-        form_layout = GridLayout(cols=2, spacing=[10, 10])
+        form_layout = GridLayout(cols=2, spacing=[10, 10], size_hint_y=None)
+        form_layout.bind(minimum_height=form_layout.setter('height'))  # Ajusta el tamaño según el contenido
         layout.add_widget(form_layout)
 
         labels = ["Edad actual:", "Sexo (mujer/hombre):", "Salario actual:",
@@ -129,20 +130,20 @@ class FormScreen(Screen):
 
         self.inputs = []
         for label in labels:
-            form_layout.add_widget(Label(text=label, font_size=20, color="black"))  # Tamaño de etiqueta reducido a 20
-            input_field = TextInput(multiline=False, font_size=20)  # Tamaño del cuadro de texto igualado a 20
+            form_layout.add_widget(Label(text=label, font_size=20, color="black"))
+            input_field = TextInput(multiline=False, font_size=24, size_hint_y=None, height=40)  # Ajuste del tamaño del campo de entrada
             form_layout.add_widget(input_field)
             self.inputs.append(input_field)
 
         # Botones
-        button_layout = BoxLayout(spacing=10)
+        button_layout = BoxLayout(spacing=10, size_hint_y=None, height=50)
         layout.add_widget(button_layout)
 
-        calcular_button = Button(text='Calcular', font_size=25, size_hint=(None, None), size=(150, 40))  # Botón más pequeño
+        calcular_button = Button(text='Calcular', font_size=25, size_hint=(None, None), size=(150, 50))
         calcular_button.bind(on_press=self.calcular_pension)
         button_layout.add_widget(calcular_button)
 
-        volver_button = Button(text='Volver', font_size=25, size_hint=(None, None), size=(150, 40))  # Botón más pequeño
+        volver_button = Button(text='Volver', font_size=25, size_hint=(None, None), size=(150, 50))
         volver_button.bind(on_press=self.volver_principal)
         button_layout.add_widget(volver_button)
 
@@ -150,13 +151,13 @@ class FormScreen(Screen):
         conn = None
         cursor = None
         try:
-        # Obtener conexión desde la función database_connection
-            conn, cursor = database_connection()  # Llama a la función sin 'self'
+            # Obtener conexión desde la función database_connection
+            conn, cursor = database_connection()
 
             if conn is None or cursor is None:
                 raise Exception("No se pudo establecer la conexión a la base de datos.")
 
-        # Aquí ya puedes hacer el cálculo y la inserción como antes
+            # Aquí ya puedes hacer el cálculo y la inserción como antes
             edad_actual = int(self.inputs[0].text)
             sexo = self.inputs[1].text.lower()
             salario_actual = float(self.inputs[2].text)
@@ -166,10 +167,10 @@ class FormScreen(Screen):
             tasa_administracion = float(self.inputs[6].text)
 
             pension_calculator = Calcular(edad_actual, sexo, salario_actual, semanas_laboradas, ahorro_actual,
-                                      rentabilidad_fondo, tasa_administracion)
+                                          rentabilidad_fondo, tasa_administracion)
             valor_ahorro_pensional, pension_anual, pension_mensual = pension_calculator.calcular_pension()
 
-        # Insertar los datos en la base de datos PostgreSQL
+            # Insertar los datos en la base de datos PostgreSQL
             cursor.execute('''
                 INSERT INTO pension (edad_actual, sexo, salario_actual, semanas_laboradas, ahorro_actual, rentabilidad_fondo, tasa_administracion)
                 VALUES (%s, %s, %s, %s, %s, %s, %s)
@@ -177,7 +178,7 @@ class FormScreen(Screen):
 
             conn.commit()
 
-        # Mostrar el resultado en la pantalla de resultados
+            # Mostrar el resultado en la pantalla de resultados
             result_screen = self.manager.get_screen('resultado')
             result_screen.mostrar_resultado(valor_ahorro_pensional, pension_anual, pension_mensual)
             self.manager.current = 'resultado'
@@ -191,7 +192,6 @@ class FormScreen(Screen):
                 cursor.close()
             if conn:
                 conn.close()
-
 
     def volver_principal(self, instance):
         self.manager.current = 'principal'
