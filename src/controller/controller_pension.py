@@ -1,10 +1,10 @@
 import sys
-import os
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.append(".")
+sys.path.append("src")
 
 import psycopg2
 from model.pension import Pension
-from sql import secret_config
+import secret_config
 
 class ControladorPension:
 
