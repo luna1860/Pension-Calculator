@@ -36,7 +36,7 @@ class TestControladorPension(unittest.TestCase):
         pension_invalida = Pension(edad_actual=17, sexo='hombre', salario_actual=1000, semanas_laboradas=1150,
                                    ahorro_actual=40000, rentabilidad_fondo=5.5, tasa_administracion=1.2)
         with self.assertRaises(psycopg2.Error):
-            ControladorPension.InsertarPension(pension_invalida)
+            ControladorPension.InsertarPension(pension_invalida)      
 
     def test_buscar_pension_por_id(self):
         """ Prueba la búsqueda de un registro existente por ID """
@@ -47,6 +47,15 @@ class TestControladorPension(unittest.TestCase):
         resultado = ControladorPension.BuscarPensionPorId(1)
         self.assertIsNotNone(resultado)
         self.assertEqual(resultado.edad_actual, pension.edad_actual)
+
+    def test_insertar_pension_datos_frontera(self):
+        """ Prueba insertar una pensión con edad en el límite permitido"""
+        pension = Pension(edad_actual=65, sexo='mujer', salario_actual=3000, semanas_laboradas=1500,
+                          ahorro_actual=70000, rentabilidad_fondo=7.0, tasa_administracion=1.0)  
+        try:
+            ControladorPension.InsertarPension(pension)
+        except Exception as e:
+            self.fail(f"Falló al insertar un registro de pensión con datos en el límite {e}")      
 
     def test_buscar_pension_por_id_no_existente(self):
         """ Prueba la búsqueda de un ID que no existe """
@@ -59,7 +68,7 @@ class TestControladorPension(unittest.TestCase):
             ControladorPension.EliminarTabla()
             ControladorPension.CrearTabla()  # La recrea para otros tests
         except Exception as e:
-            self.fail(f"Falló al eliminar la tabla: {e}")
+            self.fail(f"Falló al eliminar la tabla: {e}")     
 
     @classmethod
     def tearDownClass(cls):
