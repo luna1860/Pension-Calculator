@@ -12,3 +12,6 @@ app = Flask(__name__)
 @app.route('/')
 def menu_principal():
     return render_template('menu_principal.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)
