@@ -48,6 +48,16 @@ class TestControladorPension(unittest.TestCase):
         self.assertIsNotNone(resultado)
         self.assertEqual(resultado.edad_actual, pension.edad_actual)
 
+    def test_insertar_pension_datos_minimos(self):
+        """ Prueba insertar una pensión con datos mínimos válidos """
+        pension = Pension(edad_actual=18, sexo='mujer', salario_actual=1000, semanas_laboradas=52,
+                      ahorro_actual=5000, rentabilidad_fondo=4.0, tasa_administracion=1.0)
+        try:
+            ControladorPension.InsertarPension(pension)
+        except Exception as e:
+            self.fail(f"Falló al insertar una pensión con datos mínimos: {e}")
+    
+
     def test_insertar_pension_datos_frontera(self):
         """ Prueba insertar una pensión con edad en el límite permitido"""
         pension = Pension(edad_actual=65, sexo='mujer', salario_actual=3000, semanas_laboradas=1500,
