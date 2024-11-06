@@ -1,5 +1,5 @@
 # Para poder servir plantillas HTML desde archivos, es necesario importar el modulo render_template
-from flask import Flask, flash, render_template, request
+from flask import Flask, flash, render_template, request, redirect
 import sys
 sys.path.append('src')
 
@@ -29,6 +29,7 @@ def new():
     """
     if request.method == 'POST':
         try:
+            # Obtener la información del formulario
             edad_actual = int(request.form['edad_actual'])
             sexo = request.form['sexo']
             salario_actual = float(request.form['salario_actual'])
@@ -38,37 +39,59 @@ def new():
             tasa_administracion = float(request.form['tasa_administracion'])
 
             # Calcular la pensión usando la clase Calcular
-            calculadora = Calcular(edad_actual=edad_actual,sexo=sexo,salario_actual=salario_actual,semanas_laboradas=semanas_laboradas,ahorro_actual=ahorro_actual,rentabilidad_fondo=rentabilidad_fondo,tasa_administracion=tasa_administracion)
+            calculadora = Calcular(
+                edad_actual=edad_actual,
+                sexo=sexo,
+                salario_actual=salario_actual,
+                semanas_laboradas=semanas_laboradas,
+                ahorro_actual=ahorro_actual,
+                rentabilidad_fondo=rentabilidad_fondo,
+                tasa_administracion=tasa_administracion
+            )
 
             # Realizar el cálculo
             ahorro_esperado, pension_anual, pension_mensual = calculadora.calcular_pension()
 
-            pension = Pension(edad_actual=edad_actual, sexo=sexo, salario_actual=salario_actual, semanas_laboradas=semanas_laboradas, ahorro_actual=ahorro_actual, rentabilidad_fondo=rentabilidad_fondo, tasa_administracion=tasa_administracion)
+            # Crear el objeto Pension
+            pension = Pension(
+                edad_actual=edad_actual, 
+                sexo=sexo, 
+                salario_actual=salario_actual, 
+                semanas_laboradas=semanas_laboradas, 
+                ahorro_actual=ahorro_actual, 
+                rentabilidad_fondo=rentabilidad_fondo, 
+                tasa_administracion=tasa_administracion
+            )
 
             # Guardar en la base de datos
             ControladorPension.InsertarPension(pension)
             flash('Simulación guardada correctamente', 'success')
-            # Resultados del cálculo a la plantilla           
-            return render_template('pension.html',ahorro_esperado=ahorro_esperado,pension_anual=pension_anual,pension_mensual=pension_mensual)
-    
-        except ValueError:
-            flash('Por favor, ingrese datos numéricos válidos.')
+            return redirect('/historial_simulaciones')  # Redirigir al historial de simulaciones después de guardar
         except Exception as e:
-            flash(f'Ocurrió un error al procesar la simulación: {str(e)}')
-
+            flash(f'Ocurrió un error: {str(e)}', 'error')  # Mostrar un mensaje de error si algo falla
+            return render_template('nueva_simulacion.html')
+    
     return render_template('nueva_simulacion.html')
-
 
 @app.route('/historial_simulaciones')
 def history():
-    """
-    Muestra el historial de simulaciones guardadas.
+    simulaciones = ControladorPension.SelectAll()
+    return render_template('historial_simulaciones.html', simulaciones=simulaciones)
 
-    - Obtiene todas las simulaciones de la base de datos a través del controlador y
-      renderiza la página de historial con los datos obtenidos.
+@app.route('/eliminar_historial', methods=['POST'])
+def delete_history():
     """
-    data = ControladorPension.SelectAll()
-    return render_template('historial_simulaciones.html', data=data)
+    Maneja la eliminación del historial de simulaciones de pensión.
+    """
+    try:
+        # Eliminar todas las simulaciones del historial
+        ControladorPension.EliminarTodo()
+        flash('Historial eliminado correctamente', 'success')
+    except Exception as e:
+        flash(f'Ocurrió un error al eliminar el historial: {str(e)}', 'error')
+
+    # Redirigir a la página de historial después de la eliminación
+    return redirect('/historial_simulaciones')
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -36,25 +36,29 @@
                     <th>Edad Actual</th>
                     <th>Sexo</th>
                     <th>Salario Actual</th>
-                    <th>Semanas Laboradas</th>
                     <th>Ahorro Actual</th>
+                    <th>Semanas Laboradas</th>
                     <th>Rentabilidad del Fondo (%)</th>
                     <th>Tasa de Administración (%)</th>
                 </tr>
             </thead>
         <tbody>
-            {% for simulacion in data %}
-                <tr>
-                    <td>{{ simulacion[0] }}</td>
-                    <td>{{ simulacion[1] }}</td>
-                    <td>{{ simulacion[2] }}</td>
-                    <td>{{ simulacion[3] }}</td>
-                    <td>{{ simulacion[4] }}</td>
-                    <td>{{ simulacion[5] }}</td>
-                    <td>{{ simulacion[6] }}</td>
-                </tr>
-                {% endfor %}
+            {% for simulacion in simulaciones %}
+            <tr>
+                <td>{{ simulacion.edad_actual }}</td>
+                <td>{{ simulacion.sexo }}</td>
+                <td>{{ simulacion.salario_actual }}</td>
+                <td>{{ simulacion.ahorro_actual }}</td>
+                <td>{{ simulacion.semanas_laboradas }}</td>
+                <td>{{ simulacion.rentabilidad_fondo }}</td>
+                <td>{{ simulacion.tasa_administracion }}</td>
+            </tr>
+            {% endfor %}
         </tbody>
+        </table>
+        <form action="/eliminar_historial" method="post" style="margin-top: 20px;">
+            <button type="submit">Eliminar historial</button>
+        </form>
     </div>
 </body>
 </html>    
