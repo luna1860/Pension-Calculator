@@ -4,6 +4,7 @@ sys.path.append(".")
 from src.pension_calculator_folder.pension_calculator import Calcular, EdadNegativa, SaldoNegativo, RentabilidadNegativa, AdministracionNegativa, SemanasNegativas, SemanasInsuficientes, EdadInsuficiente, SexoInvalido
 
 def ejecutar_calculo_pension():
+    """Ejecuta el proceso de cálculo de pensión."""
     try:
         datos = solicitar_datos_por_consola()
         calculador = Calcular(*datos)
@@ -13,6 +14,7 @@ def ejecutar_calculo_pension():
         print("Error:", e)
 
 def solicitar_datos_por_consola():
+    """Solicita al usuario los datos necesarios para el cálculo de la pensión."""
     while True:
         try:
             edad_actual = solicitar_entero_positivo("Ingrese su edad actual: ")
@@ -28,18 +30,21 @@ def solicitar_datos_por_consola():
             print("Por favor, ingrese datos válidos.\n")
 
 def mostrar_menu():
+    """ Muestra el menú de opciones para el usuario"""
     print("\nMenu:")
     print("1. Calcular pensión")
     print("2. Salir")
     return input("Ingrese el número de la opción que desea realizar: ")
 
 def mostrar_resultado(ahorro_pensional_esperado, pension_anual, pension_mensual):
+    """Muestra los resultados del cálculo de la pensión al usuario."""
     print("Resultado del cálculo de la pensión:")
     print("Valor del ahorro pensional esperado:", "{:,.3f}".format(ahorro_pensional_esperado))
     print("Valor de la pensión anual:", "{:,.3f}".format(pension_anual))
     print("Valor de la pensión mensual:", "{:,.3f}".format(pension_mensual))
 
 def solicitar_entero_positivo(mensaje):
+    """Solicita un número entero positivo al usuario."""
     while True:
         valor = input(mensaje)
         if valor.isdigit() and int(valor) > 0:
@@ -47,6 +52,7 @@ def solicitar_entero_positivo(mensaje):
         print("Error: Debe ingresar un número entero positivo.")
 
 def solicitar_float_positivo(mensaje):
+    """Solicita un número decimal positivo al usuario."""
     while True:
         valor = input(mensaje)
         try:
@@ -59,6 +65,7 @@ def solicitar_float_positivo(mensaje):
             print("Error: Debe ingresar un número válido.")
 
 def solicitar_sexo():
+    """Solicita el sexo del usuario."""
     while True:
         sexo = input("Ingrese su sexo (mujer/hombre): ").lower()
         if sexo in ["mujer", "hombre"]:

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resultados</title>
+</head>
+<body>
+    <h1>Resultados de la Simulación</h1>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <div class="resultados">
+        <h2>Resultados del cálculo:</h2>
+        <h2>Tu pensión calculada:</h2>
+        <p>Ahorro pensional esperado: ${{ "%.2f"|format(ahorro_esperado) }}</p>
+        <p>Pensión anual: ${{ "%.2f"|format(pension_anual) }}</p>
+        <p>Pensión mensual: ${{ "%.2f"|format(pension_mensual) }}</p>
+    </div>
+    
+    <div class="enlaces">
+        <a href="/nueva_simulacion">Realizar nueva simulación</a>
+        <a href="/historial_simulaciones">Ver historial</a>
+    </div>
+</body>
+</html>

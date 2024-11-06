@@ -5,6 +5,7 @@ sys.path.append('src')
 
 from model.pension import Pension
 from controller.controller_pension import ControladorPension
+from pension_calculator_folder.pension_calculator import Calcular
 
 # Flask constructor: crea una variable que nos servirá para comunicarle a Flask
 # la configuración que queremos para nuestra aplicación
@@ -27,20 +28,33 @@ def new():
     - Si el método es 'GET', renderiza la página de formulario para crear una nueva simulación.
     """
     if request.method == 'POST':
-        edad_actual = request.form['edad_actual']
-        sexo = request.form['sexo']
-        salario_actual = request.form['salario_actual']
-        semanas_laboradas = request.form['semanas_laboradas']
-        ahorro_actual = request.form['ahorro_actual']
-        rentabilidad_fondo = request.form['rentabilidad_fondo']
-        tasa_administracion = request.form['tasa_administracion']
+        try:
+            edad_actual = int(request.form['edad_actual'])
+            sexo = request.form['sexo']
+            salario_actual = float(request.form['salario_actual'])
+            semanas_laboradas = int(request.form['semanas_laboradas'])
+            ahorro_actual = float(request.form['ahorro_actual'])
+            rentabilidad_fondo = float(request.form['rentabilidad_fondo'])
+            tasa_administracion = float(request.form['tasa_administracion'])
 
-        pension = Pension(edad_actual=edad_actual, sexo=sexo, salario_actual=salario_actual, semanas_laboradas=semanas_laboradas, ahorro_actual=ahorro_actual, rentabilidad_fondo=rentabilidad_fondo, tasa_administracion=tasa_administracion)
+            # Calcular la pensión usando la clase Calcular
+            calculadora = Calcular(edad_actual=edad_actual,sexo=sexo,salario_actual=salario_actual,semanas_laboradas=semanas_laboradas,ahorro_actual=ahorro_actual,rentabilidad_fondo=rentabilidad_fondo,tasa_administracion=tasa_administracion)
 
-        # Guardar en la base de datos
-        ControladorPension.InsertarPension(pension)
-        flash('Simulación guardada correctamente', 'success')
-        return render_template('nueva_simulacion.html')
+            # Realizar el cálculo
+            ahorro_esperado, pension_anual, pension_mensual = calculadora.calcular_pension()
+
+            pension = Pension(edad_actual=edad_actual, sexo=sexo, salario_actual=salario_actual, semanas_laboradas=semanas_laboradas, ahorro_actual=ahorro_actual, rentabilidad_fondo=rentabilidad_fondo, tasa_administracion=tasa_administracion)
+
+            # Guardar en la base de datos
+            ControladorPension.InsertarPension(pension)
+            flash('Simulación guardada correctamente', 'success')
+            # Resultados del cálculo a la plantilla           
+            return render_template('pension.html',ahorro_esperado=ahorro_esperado,pension_anual=pension_anual,pension_mensual=pension_mensual)
+    
+        except ValueError:
+            flash('Por favor, ingrese datos numéricos válidos.')
+        except Exception as e:
+            flash(f'Ocurrió un error al procesar la simulación: {str(e)}')
 
     return render_template('nueva_simulacion.html')
 
@@ -53,7 +67,7 @@ def history():
     - Obtiene todas las simulaciones de la base de datos a través del controlador y
       renderiza la página de historial con los datos obtenidos.
     """
-    data: None = ControladorPension.SelectAll()
+    data = ControladorPension.SelectAll()
     return render_template('historial_simulaciones.html', data=data)
 
 if __name__ == '__main__':
