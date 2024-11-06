@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nueva Simulación - Calculadora de Pensiones</title>
+</head>
+<body>
+    <div class="nav">
+        <h1>Calculadora de Pensiones</h1>
+        <ul>
+            <li><a href="/nueva_simulacion">Nueva Simulación</a></li>
+            <li><a href="/historial_simulaciones">Historial de Simulaciones</a></li>
+        </ul>
+    </div>
+
+    <div>
+        <h1>Nueva Simulación</h1>
+        <form method="POST" action="/nueva_simulacion" id="miFormulario">
+            <div>
+                <label for="edad_actual">Edad actual</label>
+                <input type="number" name="edad_actual" id="edad_actual" required />
+            </div>
+            <div>
+                <label for="sexo">Sexo</label>
+                <select name="sexo" id="sexo" required>
+                    <option value="">Seleccione una opción</option>
+                    <option value="hombre">Hombre</option>
+                    <option value="mujer">Mujer</option>
+                </select>
+            </div>
+            <div>
+                <label for="salario_actual">Salario actual</label>
+                <input type="number" name="salario_actual" id="salario_actual" required />
+            </div>
+            <div>
+                <label for="semanas_laboradas">Semanas laboradas</label>
+                <input type="number" name="semanas_laboradas" id="semanas_laboradas" required />
+            </div>
+            <div>
+                <label for="ahorro_actual">Ahorro actual</label>
+                <input type="number" name="ahorro_actual" id="ahorro_actual" required />
+            </div>
+            <div>
+                <label for="rentabilidad_fondo">Rentabilidad del fondo (%)</label>
+                <input type="number" name="rentabilidad_fondo" id="rentabilidad_fondo" required />
+            </div>
+            <div>
+                <label for="tasa_administracion">Tasa de administración (%)</label>
+                <input type="number" name="tasa_administracion" id="tasa_administracion" required />
+            </div>
+            <div>
+                <input type="submit" value="Calcular">
+            </div> 
+        </form>
+    </div>
+</body>
+</html>
