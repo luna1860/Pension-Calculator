@@ -36,8 +36,10 @@ class ControladorPension:
     @staticmethod
     def SelectAll():
         cursor = ControladorPension.ObtenerCursor()
-        cursor.execute("""SELECT * FROM pension WHERE 1=1""")
-        return cursor.fetchall()
+        cursor.execute("""SELECT edad_actual, sexo, salario_actual, semanas_laboradas, ahorro_actual, rentabilidad_fondo, tasa_administracion 
+                          FROM pension;""")
+        resultados = cursor.fetchall()
+        return [Pension(edad_actual=fila[0], sexo=fila[1], salario_actual=fila[2], semanas_laboradas=fila[3], ahorro_actual=fila[4], rentabilidad_fondo=fila[5], tasa_administracion=fila[6]) for fila in resultados]
 
     @staticmethod
     def BuscarPensionPorId(id_usuario):
@@ -69,28 +71,7 @@ class ControladorPension:
         """ Borra la tabla de usuarios de la BD """
         cursor = ControladorPension.ObtenerCursor()
 
-        cursor.execute("""drop table pension""" )
+        cursor.execute("""DELETE FROM pension""" )
         # Confirma los cambios realizados en la base de datos
         # Si no se llama, los cambios no quedan aplicados
         cursor.connection.commit()
-
-if __name__ == "__main__":
-
-    # Creamos tabla luego de analizar si existe o no
-    ControladorPension.CrearTabla()
-    print("Tabla creada exitosamente")
-
-    # Insertamos un registro de prueba si ya tienes la clase Pension lista
-    nuevo_registro = Pension(edad_actual=25, sexo='hombre', salario_actual=1000, semanas_laboradas=1150, ahorro_actual=40000, rentabilidad_fondo=5.5, tasa_administracion=1.2)
-    ControladorPension.InsertarPension(nuevo_registro)
-    print("Registro agregado a la tabla exitosamente")
-    
-    # Buscamos un registro (ID)
-    resultado = ControladorPension.BuscarPensionPorId(2)
-    print(resultado)
-
-    # Para finalizar eliminamos tabla para un próximo ejemplo generar otra
-    """
-    ControladorPension.EliminarTabla()
-    print("Tabla eliminada exitosamente")
-    """

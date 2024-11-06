@@ -1,5 +1,5 @@
 # Para poder servir plantillas HTML desde archivos, es necesario importar el modulo render_template
-from flask import Flask, flash, render_template, request
+from flask import Flask, flash, render_template, request, redirect
 import sys
 sys.path.append('src')
 
@@ -40,21 +40,24 @@ def new():
         # Guardar en la base de datos
         ControladorPension.InsertarPension(pension)
         flash('Simulación guardada correctamente', 'success')
-        return render_template('nueva_simulacion.html')
+        return redirect('/historial_simulaciones')
 
     return render_template('nueva_simulacion.html')
 
 
 @app.route('/historial_simulaciones')
 def history():
-    """
-    Muestra el historial de simulaciones guardadas.
+    simulaciones = ControladorPension.SelectAll()
+    return render_template('historial_simulaciones.html', simulaciones=simulaciones)
 
-    - Obtiene todas las simulaciones de la base de datos a través del controlador y
-      renderiza la página de historial con los datos obtenidos.
+@app.route('/eliminar_historial', methods=['POST'])
+def delete_history():
     """
-    data: None = ControladorPension.SelectAll()
-    return render_template('historial_simulaciones.html', data=data)
+    Maneja la eliminación del historial de simulaciones de pensión.
+    """
+    ControladorPension.EliminarTabla()
+    flash('Historial de simulaciones eliminado correctamente', 'success')
+    return render_template('historial_simulaciones.html', simulaciones=[])
 
 if __name__ == '__main__':
     app.run(debug=True)
