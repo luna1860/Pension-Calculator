@@ -5,6 +5,9 @@ sys.path.append("src")
 import psycopg2
 from model.pension import Pension
 import secret_config
+from dotenv import load_dotenv
+
+load_dotenv()
 
 class ControladorPension:
 
@@ -35,6 +38,12 @@ class ControladorPension:
         cursor.connection.commit()
 
     @staticmethod
+    def SelectAll():
+        cursor = ControladorPension.ObtenerCursor()
+        cursor.execute("""SELECT * FROM pension WHERE 1=1""")
+        return cursor.fetchall()
+
+    @staticmethod
     def BuscarPensionPorId(id_usuario):
         """ Busca la pensión de un usuario por su ID """
         cursor = ControladorPension.ObtenerCursor()
@@ -51,11 +60,11 @@ class ControladorPension:
     def ObtenerCursor():
         """ Conecta a la BD y devuelve el cursor """
         connection = psycopg2.connect(
-            database=secret_config.PGDATABASE,
-            user=secret_config.PGUSER,
-            password=secret_config.PGPASSWORD,
-            host=secret_config.PGHOST,
-            port=secret_config.PGPORT
+            database=os.getenv("PGDATABASE"),
+            user=os.getenv("PGUSER"),
+            password=os.getenv("PGPASSWORD"),
+            host=os.getenv("PGHOST"),
+            port=os.getenv("PGPORT")
         )
         return connection.cursor()
     

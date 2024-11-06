@@ -12,6 +12,10 @@ Del numeral 6 al 9
 - Santiago Tavera Vargas
 - Santiago Cordoba
 
+## Optimización Web
+
+- Sara Moncada Correa
+
 ## ¿Qué es y para qué sirve?
 
 ### Descripción
