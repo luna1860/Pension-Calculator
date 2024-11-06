@@ -4,18 +4,108 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nueva Simulación - Calculadora de Pensiones</title>
+    <style>
+        /* General */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            width: 90%;
+            max-width: 800px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Encabezado */
+        h1, h2 {
+            color: #333;
+            text-align: center;
+        }
+
+        /* Formulario */
+        form div {
+            margin-bottom: 15px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="number"], select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #28a745;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+        /* Resultados */
+        .resultados {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #eaf8e6;
+            color: #333;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .resultados p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        /* Botones de navegación */
+        .nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+        .nav li {
+            margin: 0 10px;
+        }
+        .nav a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .nav a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <div class="nav">
-        <h1>Calculadora de Pensiones</h1>
-        <ul>
-            <li><a href="/nueva_simulacion">Nueva Simulación</a></li>
-            <li><a href="/historial_simulaciones">Historial de Simulaciones</a></li>
-        </ul>
-    </div>
+    <div class="container">
+        <div class="nav">
+            <h1>Calculadora de Pensiones</h1>
+            <ul>
+                <li><a href="/nueva_simulacion">Nueva Simulación</a></li>
+                <li><a href="/historial_simulaciones">Historial de Simulaciones</a></li>
+            </ul>
+        </div>
 
-    <div>
-        <h1>Nueva Simulación</h1>
+        <h2>Nueva Simulación</h2>
         <form method="POST" action="/nueva_simulacion" id="miFormulario">
             <div>
                 <label for="edad_actual">Edad actual</label>
@@ -53,6 +143,16 @@
                 <input type="submit" value="Calcular">
             </div>
         </form>
+
+        <!-- Mostrar resultados de cálculo si están disponibles -->
+        {% if ahorro_esperado is not none %}
+            <div class="resultados">
+                <h2>Resultados de la Simulación</h2>
+                <p><strong>Ahorro esperado:</strong> ${{ ahorro_esperado|round(0, 'floor') }}</p>
+                <p><strong>Pensión anual:</strong> ${{ pension_anual|round(0, 'floor') }}</p>
+                <p><strong>Pensión mensual:</strong> ${{ pension_mensual|round(0, 'floor') }}</p>
+            </div>
+        {% endif %}
     </div>
 </body>
 </html>

@@ -20,6 +20,7 @@ def menu_principal():
 
 @app.route('/nueva_simulacion', methods=['GET', 'POST'])
 def new():
+    ahorro_esperado = pension_anual = pension_mensual = None
     """
     Maneja la creación de una nueva simulación de pensión.
 
@@ -66,12 +67,11 @@ def new():
             # Guardar en la base de datos
             ControladorPension.InsertarPension(pension)
             flash('Simulación guardada correctamente', 'success')
-            return redirect('/historial_simulaciones')  # Redirigir al historial de simulaciones después de guardar
         except Exception as e:
             flash(f'Ocurrió un error: {str(e)}', 'error')  # Mostrar un mensaje de error si algo falla
-            return render_template('nueva_simulacion.html')
+            #return render_template('nueva_simulacion.html', ahorro_esperado=ahorro_esperado,pension_anual=pension_anual,pension_mensual=pension_mensual)
     
-    return render_template('nueva_simulacion.html')
+    return render_template('nueva_simulacion.html',ahorro_esperado=ahorro_esperado,pension_anual=pension_anual,pension_mensual=pension_mensual)
 
 @app.route('/historial_simulaciones')
 def history():
@@ -85,10 +85,10 @@ def delete_history():
     """
     try:
         # Eliminar todas las simulaciones del historial
-        ControladorPension.EliminarTodo()
+        ControladorPension.EliminarTabla()
         flash('Historial eliminado correctamente', 'success')
     except Exception as e:
-        flash(f'Ocurrió un error al eliminar el historial: {str(e)}', 'error')
+        flash(f'Ocurrió un error al eliminar el historial: {str(e)}', 'error')        
 
     # Redirigir a la página de historial después de la eliminación
     return redirect('/historial_simulaciones')

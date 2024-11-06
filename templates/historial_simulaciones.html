@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menú Principal - Calculadora de Pensiones</title>
+    <title>Historial de Simulaciones - Calculadora de Pensiones</title>
     <style>
         table {
             width: 100%;
@@ -19,17 +19,39 @@
         }
         tr:nth-child(even) {background-color: #f9f9f9;}
         tr:hover {background-color: #ddd;}
+
+        /* Estilo para los mensajes flash */
+        .alert {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+        .alert-success {
+            color: #3c763d;
+            background-color: #dff0d8;
+            border-color: #d6e9c6;
+        }
+        .alert-error {
+            color: #a94442;
+            background-color: #f2dede;
+            border-color: #ebccd1;
+        }
     </style>
 </head>
 <body>
-    <h1>Calculadora de Pensiones</h1>
-    <ul>
-        <li><a href="/nueva_simulacion">Nueva Simulación</a></li>
-        <li><a href="/historial_simulaciones">Historial de Simulaciones</a></li>
-    </ul>
+    <h1>Historial de Simulaciones</h1>
+
+    <!-- Mostrar mensajes flash -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
 
     <div>
-        <h1>Historial de simulaciones</h1>
         <table>
             <thead>
                 <tr>
@@ -42,23 +64,24 @@
                     <th>Tasa de Administración (%)</th>
                 </tr>
             </thead>
-        <tbody>
-            {% for simulacion in simulaciones %}
-            <tr>
-                <td>{{ simulacion.edad_actual }}</td>
-                <td>{{ simulacion.sexo }}</td>
-                <td>{{ simulacion.salario_actual }}</td>
-                <td>{{ simulacion.ahorro_actual }}</td>
-                <td>{{ simulacion.semanas_laboradas }}</td>
-                <td>{{ simulacion.rentabilidad_fondo }}</td>
-                <td>{{ simulacion.tasa_administracion }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
+            <tbody>
+                {% for simulacion in simulaciones %}
+                <tr>
+                    <td>{{ simulacion.edad_actual }}</td>
+                    <td>{{ simulacion.sexo }}</td>
+                    <td>{{ simulacion.salario_actual }}</td>
+                    <td>{{ simulacion.ahorro_actual }}</td>
+                    <td>{{ simulacion.semanas_laboradas }}</td>
+                    <td>{{ simulacion.rentabilidad_fondo }}</td>
+                    <td>{{ simulacion.tasa_administracion }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
         </table>
+
         <form action="/eliminar_historial" method="post" style="margin-top: 20px;">
             <button type="submit">Eliminar historial</button>
         </form>
     </div>
 </body>
-</html>    
+</html>
