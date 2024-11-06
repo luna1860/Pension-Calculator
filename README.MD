@@ -14,6 +14,7 @@ Del numeral 6 al 9
 
 ## Optimización Web
 
+- Tomas Cordoba
 - Sara Moncada Correa
 
 ## ¿Qué es y para qué sirve?
