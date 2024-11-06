@@ -1,13 +1,9 @@
 import sys
 sys.path.append(".")
-sys.path.append("src")
 
 import psycopg2
-from model.pension import Pension
+from src.model.pension import Pension
 import secret_config
-from dotenv import load_dotenv
-
-load_dotenv()
 
 class ControladorPension:
 
@@ -60,11 +56,11 @@ class ControladorPension:
     def ObtenerCursor():
         """ Conecta a la BD y devuelve el cursor """
         connection = psycopg2.connect(
-            database=os.getenv("PGDATABASE"),
-            user=os.getenv("PGUSER"),
-            password=os.getenv("PGPASSWORD"),
-            host=os.getenv("PGHOST"),
-            port=os.getenv("PGPORT")
+            database=secret_config.PGDATABASE,
+            user=secret_config.PGUSER,
+            password=secret_config.PGPASSWORD,
+            host=secret_config.PGHOST,
+            port=secret_config.PGPORT
         )
         return connection.cursor()
     

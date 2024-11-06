@@ -40,7 +40,7 @@ class TestControladorPension(unittest.TestCase):
 
     def test_buscar_pension_por_id(self):
         """ Prueba la búsqueda de un registro existente por ID """
-        pension = Pension(edad_actual=26, sexo='mujer', salario_actual=1200, semanas_laboradas=1250,
+        pension = Pension(edad_actual=21, sexo='mujer', salario_actual=1200, semanas_laboradas=1250,
                           ahorro_actual=45000, rentabilidad_fondo=6.0, tasa_administracion=1.5)
         ControladorPension.InsertarPension(pension)
         

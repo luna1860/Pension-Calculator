@@ -1,27 +1,18 @@
 import sys
-import os
 import psycopg2
-
-
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from pension_calculator_folder.pension_calculator import *
-from sql.config import *
+sys.path.append('.')
+from src.pension_calculator_folder import pension_calculator
+import secret_config
 
 def database_connection():
-
-    PGHOST = 'ep-fancy-wildflower-a5e2d0by.us-east-2.aws.neon.tech'
-    PGDATABASE = 'neondb'
-    PGUSER = 'neondb_owner'
-    PGPASSWORD = 'nd6fXMFaw2Px'
-    
     try:
         # Conectar a la base de datos
         connection = psycopg2.connect(
-            database= PGDATABASE,
-            user= PGUSER,
-            password= PGPASSWORD,
-            host= PGHOST,
-            port=5432
+            database= secret_config.PGDATABASE,
+            user= secret_config.PGUSER,
+            password= secret_config.PGPASSWORD,
+            host= secret_config.PGHOST,
+            port= secret_config.PGPORT
         )
         print("Conexión exitosa a la base de datos.")
         cursor = connection.cursor()
