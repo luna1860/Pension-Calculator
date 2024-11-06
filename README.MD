@@ -151,6 +151,13 @@ Se agrega de la siguiente manera al gitignore:
 
 De este modo ya nuestras credenciales quedan completamente seguras y no corremos peligro de filtracion de datos.
 
+## Como ejecutar la aplicación web?
+
+Para correr el programa en la web debes realizar los siguientes pasos:
+
+1. 
+
+
 
 
 
