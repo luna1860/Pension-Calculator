@@ -86,7 +86,7 @@ Para abrir el programa con su GUI, ejecuta el siguiente comando:
 
 #### Ejecución HTML:
 
-Para ver la ejecución a través de HTML junto la conexión con la base de datos, debes primero establecer los parametros de tu base de datos, para lograr esta conexión, las credenciales proporcionadas por NeonTech (bajo el parámetro "parameters only") se deben agregar al archivo `secret_config.py` (Puedes usar como base el archivo `secret_config_sample.py` y renombrarlo).
+Para ver la ejecución a través de HTML junto la conexión con la base de datos, debes primero establecer los parametros de tu base de datos con las credenciales proporcionadas por NeonTech (bajo el parámetro "parameters only"). Estas se deben agregar al archivo `secret_config.py` (Puedes usar como base el archivo `secret_config_sample.py` y renombrarlo).
 
 Una vez configurada la base de datos, se puede realizar la ejecución con el siguiente comando:
 
