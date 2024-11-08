@@ -32,60 +32,24 @@ La calculadora solicita información personal clave como la edad, el salario, el
 
 Una vez ingresados los datos, el sistema realiza los cálculos necesarios y devuelve el valor estimado de la pensión mensual.
 
-## ¿Cómo usar la Calculadora?
+## Instrucciones de Uso:
+1. **Clonar el repositorio:**
+    Clona el repositorio con el comando `git clone https://github.com/luna1860/Pension-Calculator`
 
-### Requisitos previos:
-Asegúrate de tener lo siguiente antes de comenzar:
-- Computadora: Funciona en Windows, macOS o Linux.
-- Conexión a Internet: Para descargar la carpeta "CalculadoraPensional".
-- Programa para extraer archivos: Como WinRAR, 7-Zip o el descompresor integrado.
-- Espacio en Disco: Suficiente para almacenar y ejecutar la calculadora.
-- Permisos de Ejecución: Puede ser necesario tener permisos de administrador para ejecutar el archivo "main_console_interfaz".
+2. **Acceder a la ruta del proyecto:**
+    Accede al proyecto con el comando 
 
-### Instrucciones de Uso:
-1. **Descarga de Archivos:**
-    Descarga el archivo comprimido "PensionCalculator.-main".
+    `cd ruta\a\ReverseMortgageSimulator`
 
-2. **Extracción de Archivos:**
-    Utiliza un programa de extracción para descomprimir el archivo "PensionCalculator.-main" y extrae los archivos en la ubicación que prefieras.
+    Ejemplo: Si clonaste el repositorio en C:\Proyectos, debes ejecutar:
 
-3. **Ubicación del Ejecutable:**
-    En la carpeta extraída, localiza los archivos ejecutables: "main_console_interfaz.py" y "main_console.py".
+    `cd C:\Proyectos\ReverseMortgageSimulator`
 
-4. **Ejecución:**
-    - **Desde la Consola:**
-      - Abre la terminal.
-      - Clona el repositorio con el siguiente comando:
-         ```bash
-         git clone https://github.com/luna1860/Pension-Calculator
-         ```
-      - Navega a la carpeta del proyecto:
-         ```bash
-         cd Pension-Calculator
-         ```
-    - Crea un entorno virtual:
-      - **Windows:**
-        ```bash
-        py -m venv .venv
-        .venv\Scripts\activate
-        ```
-      - **macOS/Linux:**
-        ```bash
-        python3 -m venv venv
-        source venv/bin/activate
-        ```
-    - Instala las dependencias en el entorno virtual:
-      ```bash
-      pip install -r requirements.txt
-      ```
-    - **Desde la Consola (Interfaz de Texto):**
-      - Ejecuta el siguiente comando:
-         ```bash
-         python src\Console\pension_calculator_console.py
-         ```
-    - **Desde Visual Studio:**
-      - Haz doble clic en el archivo "main_interfaz" para abrir la aplicación.
-      - Ajusta la ventana con el ícono de maximizar en la parte superior derecha.
+3. **Crear entorno virtual:**
+    Antes de instalar los paquetes requeridos, se recomienda crear un entorno virtual. Ejecuta los siguientes comandos:
+
+    `py -m venv .venv`
+    `.venv\Scripts\activate`
 
 5. **Uso de la Aplicación:**
     Introduce los datos solicitados (edad, salario, semanas laboradas, etc.) y presiona "Calcular" para obtener la estimación de tu pensión. Los resultados se mostrarán en una nueva ventana.
