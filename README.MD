@@ -86,13 +86,13 @@ Para abrir el programa con su GUI, ejecuta el siguiente comando:
 
 #### Ejecución HTML:
 
-Para ver la ejecución a través de HTML junto la conección con la base de datos, debes primero establecer los parametros de tu base de datos, para lograr esta conexión, las credenciales proporcionadas por NeonTech (bajo el parámetro "parameters only") se deben agregar al archivo `secret_config.py` (Puedes usar como base el archivo `secret_config_sample.py` y renombrarlo).
+Para ver la ejecución a través de HTML junto la conexión con la base de datos, debes primero establecer los parametros de tu base de datos, para lograr esta conexión, las credenciales proporcionadas por NeonTech (bajo el parámetro "parameters only") se deben agregar al archivo `secret_config.py` (Puedes usar como base el archivo `secret_config_sample.py` y renombrarlo).
 
 Una vez configurada la base de datos, se puede realizar la ejecución con el siguiente comando:
 
         py app.py
 
-Esta te dará un puerto local que puedes ejecutar en tu navegador de preferencia.
+Ésta te dará un puerto local que puedes ejecutar en tu navegador de preferencia.
 
 ## Base de Datos
 La base de datos se crea utilizando Neon Tech (https://neon.tech/), que permite la creación de proyectos. En este caso, se ha creado una tabla llamada "Pensiones", que contiene los siguientes campos:
