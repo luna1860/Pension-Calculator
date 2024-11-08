@@ -32,31 +32,48 @@ La calculadora solicita información personal clave como la edad, el salario, el
 
 Una vez ingresados los datos, el sistema realiza los cálculos necesarios y devuelve el valor estimado de la pensión mensual.
 
-## Instrucciones de Uso:
-1. **Clonar el repositorio:**
-    Clona el repositorio con el comando `git clone https://github.com/luna1860/Pension-Calculator`
+## Instalación y Uso
 
-2. **Acceder a la ruta del proyecto:**
-    Accede al proyecto con el comando 
+### 1. Clonar el Repositorio:
 
-    `cd ruta\a\ReverseMortgageSimulator`
+Abre tu terminal o consola de comandos y ejecuta el siguiente comando:
 
-    Ejemplo: Si clonaste el repositorio en C:\Proyectos, debes ejecutar:
+git clone "https://github.com/luna1860/Pension-Calculator"
 
-    `cd C:\Proyectos\ReverseMortgageSimulator`
+### 2. Navegar al Directorio del Proyecto:
 
-3. **Crear entorno virtual:**
-    Antes de instalar los paquetes requeridos, se recomienda crear un entorno virtual. Ejecuta los siguientes comandos:
+Cambia el directorio a la carpeta `Pension-Calculator`:
 
-    `py -m venv .venv`
-    `.venv\Scripts\activate`
+cd ruta\al\repositorio\Pension-Calculator
 
-5. **Uso de la Aplicación:**
-    Introduce los datos solicitados (edad, salario, semanas laboradas, etc.) y presiona "Calcular" para obtener la estimación de tu pensión. Los resultados se mostrarán en una nueva ventana.
+**Ejemplo:** Si clonaste el repositorio en `C:\Proyectos`, debes ejecutar:
 
-6. **Cerrar la Aplicación:**
-    Puedes cerrar la aplicación como cualquier otra ventana de tu sistema operativo.
+cd C:\Proyectos\Pension-Calculator
 
+### 3. Crear un Entorno Virtual
+
+Antes de instalar los paquetes requeridos, es recomendable crear un entorno virtual. Ejecuta los siguientes comandos:
+
+#### En Windows:
+
+py -m venv .venv
+.venv\Scripts\activate
+
+#### En macOS/Linux:
+
+python3 -m venv venv
+source venv/bin/activate
+
+### 4. Instalar los Requisitos
+
+Una vez activado el entorno virtual, instala los paquetes necesarios desde el archivo `requirements.txt`:
+
+pip install -r requirements.txt
+
+### 5. Ejecutar el Programa
+
+
+    
 ## Base de Datos
 La base de datos se crea utilizando Neon Tech (https://neon.tech/), que permite la creación de proyectos. En este caso, se ha creado una tabla llamada "Pensiones", que contiene los siguientes campos:
 - ID
@@ -69,7 +86,4 @@ La base de datos se crea utilizando Neon Tech (https://neon.tech/), que permite 
 - Tasa de Administración
 
 ### Conexión con la Base de Datos:
-Las credenciales proporcionadas por NeonTech (bajo el parámetro "parameters only") se deben agregar a tu archivo de configuración.
-
-### Modificación de archivo `secret_config_sample.py`:
-Modifica el archivo `secret_config_sample.py` con tus credenciales de la base de datos y renómbralo a `secret_config.py`.
+Las credenciales proporcionadas por NeonTech (bajo el parámetro "parameters only") se deben agregar al archivo `secret_config.py` (Puedes usar como base el archivo `secret_config_sample.py` y renombrarlo).
