@@ -38,17 +38,17 @@ Una vez ingresados los datos, el sistema realiza los cálculos necesarios y devu
 
 Abre tu terminal o consola de comandos y ejecuta el siguiente comando:
 
-        `git clone "https://github.com/luna1860/Pension-Calculator"`
+        git clone "https://github.com/luna1860/Pension-Calculator"
 
 ### 2. Navegar al Directorio del Proyecto:
 
 Cambia el directorio a la carpeta `Pension-Calculator`:
 
-        `cd ruta\al\repositorio\Pension-Calculator`
+        cd ruta\al\repositorio\Pension-Calculator
 
 **Ejemplo:** Si clonaste el repositorio en `C:\Proyectos`, debes ejecutar:
 
-        `cd C:\Proyectos\Pension-Calculator`
+        cd C:\Proyectos\Pension-Calculator
 
 ### 3. Crear un Entorno Virtual
 
@@ -56,19 +56,19 @@ Antes de instalar los paquetes requeridos, es recomendable crear un entorno virt
 
 #### En Windows:
 
-        `py -m venv .venv`
-        `.venv\Scripts\activate`
+        py -m venv .venv
+        .venv\Scripts\activate
 
 #### En macOS/Linux:
 
-        `python3 -m venv venv`
-        `source venv/bin/activate`
+        python3 -m venv venv
+        source venv/bin/activate
 
 ### 4. Instalar los Requisitos
 
 Una vez activado el entorno virtual, instala los paquetes necesarios desde el archivo `requirements.txt`:
 
-        `pip install -r requirements.txt`
+        pip install -r requirements.txt
 
 ### 5. Ejecutar el Programa
 
@@ -76,13 +76,13 @@ Una vez activado el entorno virtual, instala los paquetes necesarios desde el ar
 
 Para realizar la ejecución por consola, ejecuta el siguiente comando:
 
-        `py src\Console\pension_calculator_console.py`
+        py src\Console\pension_calculator_console.py
 
 #### Ejecución GUI:
 
 Para abrir el programa con su GUI, ejecuta el siguiente comando:
 
-        `py src/GUI/gui_pension.py`
+        py src/GUI/gui_pension.py
 
 #### Ejecución HTML:
 
@@ -90,7 +90,7 @@ Para ver la ejecución a través de HTML junto la conección con la base de dato
 
 Una vez configurada la base de datos, se puede realizar la ejecución con el siguiente comando:
 
-        `py app.py`
+        py app.py
 
 Esta te dará un puerto local que puedes ejecutar en tu navegador de preferencia.
 
